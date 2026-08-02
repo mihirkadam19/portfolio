@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 
 interface Project {
+  slug: string;
   title: string;
   description: string;
   tags: string[];
@@ -12,6 +14,7 @@ interface Project {
 
 const projects: Project[] = [
   {
+    slug: 'codechk',
     title: 'codechk — Multi-Agent CLI Code Reviewer',
     description:
       'AI-powered code review tool for the terminal. Runs dedicated security, performance, and style agents in parallel via LangGraph, converging their findings into a single structured report instead of one generalist review pass.',
@@ -23,6 +26,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'travel-planner',
     title: 'Multi-Agent Travel Planner',
     description:
       'A LangGraph system that plans a full trip from one free-text request. Flight, hotel, and activity agents run concurrently via parallel fan-out/fan-in, with a supervisor agent that re-runs specialists on a conditional retry loop if the plan goes over budget.',
@@ -34,6 +38,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'finops-analyst',
     title: 'Agentic Cloud FinOps Analyst',
     description:
       'Fullstack FinOps assistant with Claude Sonnet 4.5 for agentic tool-calling over SSE, paired with a standalone MCP server exposing 10+ tools for cross-cloud cost analysis (AWS/Azure/GCP) — cost summaries, spike detection, idle-resource and over-provisioning checks, and tagging compliance. RSA-OAEP encrypted credentials and real-time cost visualizations via a Next.js frontend.',
@@ -46,6 +51,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'federated-learning',
     title: 'Federated Learning System',
     description:
       'A distributed AI/ML training system where multiple clients train locally on their own data and a server aggregates model updates, avoiding centralized data collection. Deployed with Kubernetes manifests for service exposure and autoscaling.',
@@ -56,6 +62,7 @@ const projects: Project[] = [
     image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200',
   },
   {
+    slug: 'chat-app',
     title: 'Chat App',
     description:
       'A browser-based real-time chat application built on the MERN stack, with Gemini-powered message translation for cross-language conversations.',
@@ -66,6 +73,7 @@ const projects: Project[] = [
     image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1200',
   },
   {
+    slug: 'rag-chatbot',
     title: 'RAG Chatbot',
     description:
       'A retrieval-augmented Q&A chatbot for training material. Ingests PPTX/DOCX/PDF documents (including inside ZIPs), chunks and embeds them into Supabase pgvector, and answers questions using hybrid vector + full-text search retrieval with GPT-4o-mini — citing exact source documents.',
@@ -80,6 +88,29 @@ const projects: Project[] = [
 export default function Work() {
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
+  const [highlighted, setHighlighted] = useState<string | null>(null);
+
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) return;
+      const match = projects.find((p) => p.slug === hash);
+      if (!match) return;
+
+      const el = document.getElementById(`project-${match.slug}`);
+      if (!el) return;
+
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setHighlighted(match.slug);
+      const timeout = setTimeout(() => setHighlighted(null), 2000);
+      return () => clearTimeout(timeout);
+    };
+
+    // run on mount, and if the hash changes while already on the page
+    scrollToHash();
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
+  }, []);
 
   return (
     <section id="work" className="py-32 px-6 border-t border-white/5">
@@ -92,10 +123,10 @@ export default function Work() {
         {/* Projects */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featured.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+            <ProjectCard key={project.slug} project={project} highlighted={highlighted === project.slug} />
           ))}
           {rest.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+            <ProjectCard key={project.slug} project={project} highlighted={highlighted === project.slug} />
           ))}
         </div>
       </div>
@@ -103,9 +134,35 @@ export default function Work() {
   );
 }
 
-function ProjectCard({ project, large = false }: { project: Project; large?: boolean }) {
+function ProjectCard({
+  project,
+  large = false,
+  highlighted = false,
+}: {
+  project: Project;
+  large?: boolean;
+  highlighted?: boolean;
+}) {
+  const primaryLink = project.live ?? project.githubLinks?.[0]?.url;
+
   return (
-    <div className="group relative bg-zinc-900/60 border border-white/5 rounded-2xl overflow-hidden hover:border-white/15 transition-all duration-300">
+    <div
+      id={`project-${project.slug}`}
+      className={`group relative bg-zinc-900/60 border rounded-2xl overflow-hidden scroll-mt-24 transition-all duration-300 ${
+        highlighted ? 'border-white/40 ring-2 ring-white/20' : 'border-white/5 hover:border-white/15'
+      }`}
+    >
+      {/* Stretched primary link — covers the whole card, sits below the icon links */}
+      {primaryLink && (
+        <a
+          href={primaryLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-0"
+          aria-label={`Open ${project.title}`}
+        />
+      )}
+
       {/* Image */}
       <div className={`overflow-hidden ${large ? 'h-52' : 'h-40'}`}>
         <img
@@ -116,10 +173,10 @@ function ProjectCard({ project, large = false }: { project: Project; large?: boo
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="relative p-6 pointer-events-none">
         <div className="flex items-start justify-between gap-2 mb-3">
           <h3 className="text-white font-semibold leading-snug">{project.title}</h3>
-          <div className="flex gap-2 flex-shrink-0 mt-0.5">
+          <div className="relative z-10 flex gap-2 flex-shrink-0 mt-0.5 pointer-events-auto">
             {project.githubLinks?.map((link) => (
               <a
                 key={link.url}
