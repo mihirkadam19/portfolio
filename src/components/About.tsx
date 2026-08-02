@@ -1,3 +1,5 @@
+import { BadgeCheck } from 'lucide-react';
+
 const skills = [
   {
     category: 'Languages',
@@ -64,6 +66,21 @@ const experience = [
       'Built end-to-end sales lead & ticketing platform on Django/React/MySQL, handling 10K+ daily CRM transactions',
       'Cut API response times by 40% via N+1 fixes and pagination across 200K+ records',
     ],
+  },
+];
+
+const certifications = [
+  {
+    name: 'AWS Certified DevOps Engineer – Professional',
+    issuer: 'Amazon Web Services',
+  },
+  {
+    name: 'AWS Academy Cloud Developing',
+    issuer: 'AWS Academy Graduate',
+  },
+  {
+    name: 'Orchestrate Containers for Cloud-Native Apps with AKS',
+    issuer: 'Microsoft',
   },
 ];
 
@@ -137,6 +154,25 @@ export default function About() {
                       </li>
                     ))}
                   </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Certifications */}
+        <div className="mt-24">
+          <h3 className="text-sm text-zinc-500 uppercase tracking-widest mb-10">Certifications</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {certifications.map((cert) => (
+              <div
+                key={cert.name}
+                className="flex items-start gap-3 bg-zinc-900/60 border border-white/5 rounded-2xl p-5 hover:border-white/15 transition-colors"
+              >
+                <BadgeCheck size={18} className="text-zinc-400 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-white text-sm font-medium leading-snug">{cert.name}</p>
+                  <p className="text-zinc-500 text-xs mt-1">{cert.issuer}</p>
                 </div>
               </div>
             ))}

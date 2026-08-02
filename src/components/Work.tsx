@@ -4,7 +4,7 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  github?: string;
+  githubLinks?: { label: string; url: string }[];
   live?: string;
   image: string;
   featured?: boolean;
@@ -12,49 +12,68 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: 'codechk — Multi-Agent CLI Code Reviewer',
+    description:
+      'AI-powered code review tool for the terminal. Runs dedicated security, performance, and style agents in parallel via LangGraph, converging their findings into a single structured report instead of one generalist review pass.',
+    tags: ['LangGraph', 'Python', 'CLI', 'Multi-Agent', 'Claude'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-cli-codereviewer' },
+    ],
+    image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    featured: true,
+  },
+  {
+    title: 'Multi-Agent Travel Planner',
+    description:
+      'A LangGraph system that plans a full trip from one free-text request. Flight, hotel, and activity agents run concurrently via parallel fan-out/fan-in, with a supervisor agent that re-runs specialists on a conditional retry loop if the plan goes over budget.',
+    tags: ['LangGraph', 'Claude', 'Python', 'Multi-Agent'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-travel-planner' },
+    ],
+    image: 'https://images.pexels.com/photos/1051073/pexels-photo-1051073.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    featured: true,
+  },
+  {
     title: 'Agentic Cloud FinOps Analyst',
     description:
-      'Fullstack FinOps assistant with Claude Sonnet 4.5 for agentic tool-calling over SSE. Features a TypeScript MCP server with 10+ tools for cross-cloud cost analysis (AWS/Azure/GCP), RSA-OAEP encrypted credentials, and real-time cost visualizations.',
+      'Fullstack FinOps assistant with Claude Sonnet 4.5 for agentic tool-calling over SSE, paired with a standalone MCP server exposing 10+ tools for cross-cloud cost analysis (AWS/Azure/GCP) — cost summaries, spike detection, idle-resource and over-provisioning checks, and tagging compliance. RSA-OAEP encrypted credentials and real-time cost visualizations via a Next.js frontend.',
     tags: ['TypeScript', 'MCP', 'Claude Sonnet', 'Next.js', 'PostgreSQL', 'Fastify'],
-    github: 'https://github.com/mihirkadam19/finops-web',
+    githubLinks: [
+      { label: 'Web App', url: 'https://github.com/mihirkadam19/finops-web' },
+      { label: 'MCP Server', url: 'https://github.com/mihirkadam19/finops-mcp-server' },
+    ],
     image: 'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1200',
     featured: true,
   },
   {
-    title: 'Multi-Agent Document Processing SaaS',
+    title: 'Federated Learning System',
     description:
-      'Enterprise-grade document processing platform with 6+ LangGraph agents, GPT-4.1 on Azure AI Foundry, and a document verification agent achieving 96% accuracy. Reduced DB update times from 25+ minutes to ~60 seconds via MCP tools.',
-    tags: ['LangGraph', 'GPT-4.1', 'Azure', 'MCP', 'REST APIs', 'Python'],
+      'A distributed AI/ML training system where multiple clients train locally on their own data and a server aggregates model updates, avoiding centralized data collection. Deployed with Kubernetes manifests for service exposure and autoscaling.',
+    tags: ['Python', 'Federated Learning', 'Kubernetes', 'Distributed Systems'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/Federated-Learning-System' },
+    ],
     image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: true,
   },
   {
-    title: 'Multi-Agent AI System (B2B MVP)',
+    title: 'Chat App',
     description:
-      'Seven-agent AI system built with LangGraph and Claude 3.7 Sonnet. Includes a RAG pipeline ingesting 1.5M+ recipe documents via Pinecone with 92% retrieval precision. Secured $200k in pre-seed funding.',
-    tags: ['LangGraph', 'Claude 3.7', 'Pinecone', 'RAG', 'Kubernetes', 'LangSmith'],
-    image: 'https://images.pexels.com/photos/8849282/pexels-photo-8849282.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  },
-  {
-    title: 'Image Health Risk Scanner',
-    description:
-      'Serverless image scanning module using Claude 3.5 Sonnet, AWS Lambda, and S3. Achieves 94% accuracy in identifying health risks and allergens with sub-25s latency, integrated into a multi-agent pipeline.',
-    tags: ['Claude 3.5', 'AWS Lambda', 'AWS S3', 'API Gateway', 'Python'],
+      'A browser-based real-time chat application built on the MERN stack, with Gemini-powered message translation for cross-language conversations.',
+    tags: ['MERN', 'React', 'Node.js', 'MongoDB', 'Gemini'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/Chat-App' },
+    ],
     image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1200',
   },
   {
-    title: 'FinOps Cost Observability Platform',
+    title: 'RAG Chatbot',
     description:
-      'Cost observability platform with 15+ dashboards importing from BigQuery, QuickSight, and Azure Data Lake using Flask REST APIs. Drove up to 25% infrastructure cost savings for enterprise clients.',
-    tags: ['Flask', 'BigQuery', 'Azure Data Lake', 'QuickSight', 'Python', 'Docker'],
-    image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  },
-  {
-    title: 'Sales Lead & CRM Platform',
-    description:
-      'End-to-end CRM platform built with Django, React, and MySQL, handling 10K+ daily transactions. Optimized API response times by 40% via N+1 fixes and automated client email notifications via AWS Lambda/SES.',
-    tags: ['Django', 'React', 'MySQL', 'AWS EC2', 'AWS Lambda', 'SES'],
-    image: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'A retrieval-augmented Q&A chatbot for training material. Ingests PPTX/DOCX/PDF documents (including inside ZIPs), chunks and embeds them into Supabase pgvector, and answers questions using hybrid vector + full-text search retrieval with GPT-4o-mini — citing exact source documents.',
+    tags: ['Next.js', 'FastAPI', 'Supabase', 'pgvector', 'OpenAI', 'RAG'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/RAG-chatbot' },
+    ],
+    image: 'https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1200',
   },
 ];
 
@@ -70,15 +89,11 @@ export default function Work() {
           <h2 className="text-3xl sm:text-4xl font-bold text-white">Selected Projects</h2>
         </div>
 
-        {/* Featured projects */}
-        <div className="grid sm:grid-cols-2 gap-6 mb-6">
-          {featured.map((project) => (
-            <ProjectCard key={project.title} project={project} large />
-          ))}
-        </div>
-
-        {/* Other projects */}
+        {/* Projects */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featured.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
           {rest.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
@@ -105,17 +120,19 @@ function ProjectCard({ project, large = false }: { project: Project; large?: boo
         <div className="flex items-start justify-between gap-2 mb-3">
           <h3 className="text-white font-semibold leading-snug">{project.title}</h3>
           <div className="flex gap-2 flex-shrink-0 mt-0.5">
-            {project.github && (
+            {project.githubLinks?.map((link) => (
               <a
-                href={project.github}
+                key={link.url}
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-500 hover:text-white transition-colors"
-                aria-label="GitHub"
+                aria-label={link.label}
+                title={link.label}
               >
                 <Github size={16} />
               </a>
-            )}
+            ))}
             {project.live && (
               <a
                 href={project.live}
