@@ -26,6 +26,18 @@ const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'agentic-researcher',
+    title: 'Agentic Researcher — Multi-Agent Crew with Memory',
+    description:
+      'A multi-agent research/analyst crew (Researcher, Critic, Writer, Supervisor) orchestrated with LangGraph, backed by working, episodic, and semantic memory layers. Postgres + pgvector store episodic/semantic memory with OpenAI embeddings, Redis handles working memory, and an Arq-based job queue decouples the API from async worker processing — all running as separate Docker containers with a GitHub Actions release pipeline to GHCR.',
+    tags: ['LangGraph', 'Claude', 'FastAPI', 'PostgreSQL', 'pgvector', 'Redis', 'Multi-Agent'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-researcher' },
+    ],
+    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    featured: true,
+  },
+  {
     slug: 'travel-planner',
     title: 'Multi-Agent Travel Planner',
     description:
