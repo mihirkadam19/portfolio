@@ -14,6 +14,18 @@ interface Project {
 
 const projects: Project[] = [
   {
+    slug: 'invoice-extraction-finetune',
+    title: 'QLoRA Invoice Extraction Fine-Tune',
+    description:
+      'Fine-tuned Qwen2.5-3B-Instruct via QLoRA (4-bit NF4, bitsandbytes) on the SROIE receipt dataset for structured JSON field extraction (vendor, date, address, total). Trained with TRL SFTTrainer on GCP/Colab GPU compute with GCS-backed checkpoint sync for resumable runs. A custom eval harness benchmarks base vs. fine-tuned checkpoints on JSON-validity, exact-match, and per-field precision/recall/F1 — pushing JSON validity from 38% to 100% and exact-match accuracy from 1% to 60%.',
+    tags: ['QLoRA', 'PEFT', 'Qwen2.5', 'TRL', 'Python', 'GCP', 'Fine-Tuning'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/fine-tuning' },
+    ],
+    image: 'https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    featured: true,
+  },
+  {
     slug: 'codechk',
     title: 'codechk — Multi-Agent CLI Code Reviewer',
     description:
