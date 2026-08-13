@@ -72,18 +72,6 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'travel-planner',
-    title: 'Multi-Agent Travel Planner',
-    description:
-      'A LangGraph system that plans a full trip from one free-text request. Flight, hotel, and activity agents run concurrently via parallel fan-out/fan-in, with a supervisor agent that re-runs specialists on a conditional retry loop if the plan goes over budget.',
-    tags: ['LangGraph', 'Claude', 'Python', 'Multi-Agent'],
-    githubLinks: [
-      { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-travel-planner' },
-    ],
-    image: 'https://images.pexels.com/photos/1051073/pexels-photo-1051073.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: true,
-  },
-  {
     slug: 'finops-analyst',
     title: 'Agentic Cloud FinOps Analyst',
     description:
@@ -94,6 +82,18 @@ const projects: Project[] = [
       { label: 'MCP Server', url: 'https://github.com/mihirkadam19/finops-mcp-server' },
     ],
     image: 'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    featured: true,
+  },
+  {
+    slug: 'travel-planner',
+    title: 'Multi-Agent Travel Planner',
+    description:
+      'A LangGraph system that plans a full trip from one free-text request. Flight, hotel, and activity agents run concurrently via parallel fan-out/fan-in, with a supervisor agent that re-runs specialists on a conditional retry loop if the plan goes over budget.',
+    tags: ['LangGraph', 'Claude', 'Python', 'Multi-Agent'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-travel-planner' },
+    ],
+    image: 'https://images.pexels.com/photos/1051073/pexels-photo-1051073.jpeg?auto=compress&cs=tinysrgb&w=1200',
     featured: true,
   },
   {
