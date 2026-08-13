@@ -9,7 +9,6 @@ interface Project {
   githubLinks?: { label: string; url: string }[];
   live?: string;
   image: string;
-  featured?: boolean;
 }
 const projects: Project[] = [
   {
@@ -22,7 +21,6 @@ const projects: Project[] = [
       { label: 'Repository', url: 'https://github.com/mihirkadam19/fine-tuning' },
     ],
     image: 'https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: true,
   },
   {
     slug: 'agentic-researcher',
@@ -34,7 +32,6 @@ const projects: Project[] = [
       { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-researcher' },
     ],
     image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: true,
   },
   {
     slug: 'rag-chatbot',
@@ -57,7 +54,6 @@ const projects: Project[] = [
       { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-cli-codereviewer' },
     ],
     image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: true,
   },
   {
     slug: 'agentic-tester',
@@ -69,7 +65,6 @@ const projects: Project[] = [
       { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-tester' },
     ],
     image: 'https://images.pexels.com/photos/14553730/pexels-photo-14553730.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: true,
   },
   {
     slug: 'finops-analyst',
@@ -82,7 +77,6 @@ const projects: Project[] = [
       { label: 'MCP Server', url: 'https://github.com/mihirkadam19/finops-mcp-server' },
     ],
     image: 'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: true,
   },
   {
     slug: 'travel-planner',
@@ -94,7 +88,6 @@ const projects: Project[] = [
       { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-travel-planner' },
     ],
     image: 'https://images.pexels.com/photos/1051073/pexels-photo-1051073.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: true,
   },
   {
     slug: 'federated-learning',
@@ -122,8 +115,6 @@ const projects: Project[] = [
 ];
 
 export default function Work() {
-  const featured = projects.filter((p) => p.featured);
-  const rest = projects.filter((p) => !p.featured);
   const [highlighted, setHighlighted] = useState<string | null>(null);
 
   useEffect(() => {
@@ -152,16 +143,10 @@ export default function Work() {
     <section id="work" className="py-32 px-6 border-t border-white/5">
       <div className="max-w-5xl mx-auto">
         <SectionLabel>Work</SectionLabel>
-        <div className="mt-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">Selected Projects</h2>
-        </div>
 
         {/* Projects */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featured.map((project) => (
-            <ProjectCard key={project.slug} project={project} highlighted={highlighted === project.slug} />
-          ))}
-          {rest.map((project) => (
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} highlighted={highlighted === project.slug} />
           ))}
         </div>
