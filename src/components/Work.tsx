@@ -26,6 +26,18 @@ const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'agentic-researcher',
+    title: 'Agentic Researcher — Multi-Agent Crew with Memory',
+    description:
+      'A multi-agent research/analyst crew (Researcher, Critic, Writer, Supervisor) orchestrated with LangGraph, backed by working, episodic, and semantic memory layers. Postgres + pgvector store episodic/semantic memory with OpenAI embeddings, Redis handles working memory, and an Arq-based job queue decouples the API from async worker processing — all running as separate Docker containers with a GitHub Actions release pipeline to GHCR.',
+    tags: ['LangGraph', 'Claude', 'FastAPI', 'PostgreSQL', 'pgvector', 'Redis', 'Multi-Agent'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-researcher' },
+    ],
+    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    featured: true,
+  },
+  {
     slug: 'codechk',
     title: 'codechk — Multi-Agent CLI Code Reviewer',
     description:
@@ -38,15 +50,14 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'agentic-researcher',
-    title: 'Agentic Researcher — Multi-Agent Crew with Memory',
+    slug: 'agentic-tester',
+    title: 'agentic-tester — Autonomous Multi-Language Test-Writing Agent',
     description:
-      'A multi-agent research/analyst crew (Researcher, Critic, Writer, Supervisor) orchestrated with LangGraph, backed by working, episodic, and semantic memory layers. Postgres + pgvector store episodic/semantic memory with OpenAI embeddings, Redis handles working memory, and an Arq-based job queue decouples the API from async worker processing — all running as separate Docker containers with a GitHub Actions release pipeline to GHCR.',
-    tags: ['LangGraph', 'Claude', 'FastAPI', 'PostgreSQL', 'pgvector', 'Redis', 'Multi-Agent'],
+      'A CLI tool that scans a codebase, plans which files need tests, and writes them via language-specific agents (Python/JS) before running the generated tests against the real local toolchain (pytest/jest). Built on a LangGraph plan-and-execute-loop and human-in-the-loop with a Critic agent that classifies each result as expected, an isolated bug, or a systemic issue — triggering a targeted replan of only the remaining tasks rather than restarting the run. Ships as standalone cross-platform binaries (PyInstaller) via an automated GitHub Actions release pipeline.',
+    tags: ['LangGraph', 'Claude', 'Python', 'CLI', 'Multi-Agent', 'PyInstaller'],
     githubLinks: [
-      { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-researcher' },
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-tester' },
     ],
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200',
     featured: true,
   },
   {
