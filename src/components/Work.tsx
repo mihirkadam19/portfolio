@@ -11,7 +11,6 @@ interface Project {
   image: string;
   featured?: boolean;
 }
-
 const projects: Project[] = [
   {
     slug: 'invoice-extraction-finetune',
@@ -38,6 +37,17 @@ const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'rag-chatbot',
+    title: 'RAG Chatbot',
+    description:
+      'A retrieval-augmented Q&A chatbot for training material. Ingests PPTX/DOCX/PDF documents (including inside ZIPs), chunks and embeds them into Supabase pgvector, and answers questions using hybrid vector + full-text search retrieval with GPT-4o-mini — citing exact source documents.',
+    tags: ['Next.js', 'FastAPI', 'Supabase', 'pgvector', 'OpenAI', 'RAG'],
+    githubLinks: [
+      { label: 'Repository', url: 'https://github.com/mihirkadam19/RAG-chatbot' },
+    ],
+    image: 'https://images.pexels.com/photos/5009158/pexels-photo-5009158.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  },
+  {
     slug: 'codechk',
     title: 'codechk — Multi-Agent CLI Code Reviewer',
     description:
@@ -46,7 +56,7 @@ const projects: Project[] = [
     githubLinks: [
       { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-cli-codereviewer' },
     ],
-    image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1200',
     featured: true,
   },
   {
@@ -58,6 +68,7 @@ const projects: Project[] = [
     githubLinks: [
       { label: 'Repository', url: 'https://github.com/mihirkadam19/agentic-tester' },
     ],
+    image: 'https://images.pexels.com/photos/14553730/pexels-photo-14553730.jpeg?auto=compress&cs=tinysrgb&w=1200',
     featured: true,
   },
   {
@@ -94,7 +105,7 @@ const projects: Project[] = [
     githubLinks: [
       { label: 'Repository', url: 'https://github.com/mihirkadam19/Federated-Learning-System' },
     ],
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: 'https://images.pexels.com/photos/2881229/pexels-photo-2881229.jpeg?auto=compress&cs=tinysrgb&w=1200',
   },
   {
     slug: 'chat-app',
@@ -107,17 +118,7 @@ const projects: Project[] = [
     ],
     image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1200',
   },
-  {
-    slug: 'rag-chatbot',
-    title: 'RAG Chatbot',
-    description:
-      'A retrieval-augmented Q&A chatbot for training material. Ingests PPTX/DOCX/PDF documents (including inside ZIPs), chunks and embeds them into Supabase pgvector, and answers questions using hybrid vector + full-text search retrieval with GPT-4o-mini — citing exact source documents.',
-    tags: ['Next.js', 'FastAPI', 'Supabase', 'pgvector', 'OpenAI', 'RAG'],
-    githubLinks: [
-      { label: 'Repository', url: 'https://github.com/mihirkadam19/RAG-chatbot' },
-    ],
-    image: 'https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  },
+  
 ];
 
 export default function Work() {
